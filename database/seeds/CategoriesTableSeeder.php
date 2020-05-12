@@ -11,6 +11,9 @@ class CategoriesTableSeeder extends Seeder
      */
     public function run()
     {
+        // 一括削除
+        Category::truncate();
+
         factory(App\Category::class, 30)->create();
     }
 }
