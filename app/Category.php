@@ -2,6 +2,7 @@
 
 namespace App;
 
+use App\Question;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Notifications\Notifiable;
 
@@ -26,11 +27,8 @@ class Category extends Model
         'title', 'description',
     ];
 
-    /**
-     * The attributes that should be hidden for arrays.
-     *
-     * @var array
-     */
-    protected $hidden = [
-    ];
+    public function questions()
+    {
+        return $this->hasMany('App\Question');
+    }
 }

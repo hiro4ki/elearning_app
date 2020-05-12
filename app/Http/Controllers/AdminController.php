@@ -13,7 +13,6 @@ class AdminController extends Controller
     public function index()
     {
         $categories = Category::all();
-
         return view('admin/users', compact('categories'));
     }
 
@@ -33,7 +32,6 @@ class AdminController extends Controller
     public function edit_category($id)
     {
         $category = Category::findOrFail($id);
-
         return view('admin/edit_category', compact('category'));
     }
 
@@ -43,7 +41,6 @@ class AdminController extends Controller
             "title" => $request->title,
             "description" => $request->description,
         ]);
-
         return redirect(route("admin.users"));
     }
 
@@ -66,7 +63,6 @@ class AdminController extends Controller
     public function add_question($id)
     {
         $category = Category::findOrFail($id);
-        
         return view("admin.add_question", compact('category'));
     }
 
