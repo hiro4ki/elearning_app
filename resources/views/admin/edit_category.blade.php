@@ -30,40 +30,35 @@
                 required>{{ $category->description }}</textarea>
             </div>
 
-            {{-- @foreach ($category->questions() as $question)
-            <div>
-              {{ $question->name }}
+            <div class="col-md-12 text-right">
+              <div class="buttons">
+                <button type="submit" class="btn btn-primary btn-sm px-5 py-2">Save</button>
+                <a href="{{ route('admin.users') }}" name="back" role="button" class="btn btn-secondary mr-2">
+                  Back
+                </a>
+              </div>
+            </div>
+          </form>
         </div>
-        @endforeach --}}
-
-        <div class="col-md-12 text-right">
-          <div class="buttons">
-            <button type="submit" class="btn btn-primary btn-sm px-5 py-2">Save</button>
-            <a href="{{ route('admin.users') }}" name="back" role="button" class="btn btn-secondary mr-2">
-              Back
-            </a>
-          </div>
-        </div>
-        </form>
       </div>
-    </div>
 
-    <table class="table table-borderless mt-5">
-      <thead class="thead-light">
-        <tr class="text-center">
-          <th class="h3">Questions</th>
+      <table class="table table-borderless mt-5">
+        <thead class="thead-light">
+          <tr class="text-center">
+            <th class="h3">Questions</th>
+          </tr>
+        </thead>
+        @foreach ($category->questions as $question)
+        <tr>
+          <td>
+            <a class="h4"
+              href="{{ route('admin.edit_question', ['id' => $question->id]) }}">{{ $question->question }}</a>
+          </td>
         </tr>
-      </thead>
-      @foreach ($category->questions as $question)
-      <tr>
-        <td>
-          <a class="h4" href="#">{{ $question->question }}</a>
-        </td>
-      </tr>
-      @endforeach
-    </table>
+        @endforeach
+      </table>
 
+    </div>
   </div>
-</div>
 </div>
 @endsection
