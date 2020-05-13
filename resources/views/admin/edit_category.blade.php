@@ -50,9 +50,19 @@
         </thead>
         @foreach ($category->questions as $question)
         <tr>
-          <td>
-            <a class="h4"
-              href="{{ route('admin.edit_question', ['id' => $question->id]) }}">{{ $question->question }}</a>
+          <td class="d-flex">
+            <div class="col-md-6 align-self-center">
+              <a class="h4" href="{{ route('admin.edit_question', ['id' => $question->id]) }}">
+                {{ $question->question }}
+              </a>
+            </div>
+            <div class="col-md-6 text-right">
+              <form action="{{ route('question.destroy', ['id' => $question->id]) }}" method="POST">
+                @method("DELETE")
+                @csrf
+                <button type="submit button" class="btn btn-danger">Delete</button>
+              </form>
+            </div>
           </td>
         </tr>
         @endforeach
