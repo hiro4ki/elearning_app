@@ -55,9 +55,10 @@ class AdminController extends Controller
         return redirect(route("admin.users"));
     }
 
-    public function edit_question()
+    public function edit_question($id)
     {
-        return view("admin.edit_question");
+        $question = Question::findOrFail($id);
+        return view('admin/edit_question', compact('question'));
     }
 
     public function add_question($id)
@@ -89,5 +90,32 @@ class AdminController extends Controller
         }
         
         return redirect(route("admin.users"));
+    }
+
+    public function update_question(Request $request, $id)
+    {
+        $question = Question::findOrFail($id);
+        $question->update([
+            'question' => $request->question,
+            ]);
+
+        foreach ($question->choices as $n => $choice) {
+            $n++;
+            $check = "check" . $n;
+            if ($request->$check == "on") {
+                $is_correct = true;
+            } else {
+                $is_correct = false;
+            }
+
+            $choice_number = "choice" . $n;
+            $choice = Choice::findOrFail($choice->id);
+            $choice->update([
+                'choice' => $request->$choice_number,
+                'is_correct' => $is_correct,
+                ]);
+        }
+
+        return redirect(route("admin.edit_category", ['id' => $question->category_id]));
     }
 }
