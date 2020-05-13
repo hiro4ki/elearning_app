@@ -99,17 +99,16 @@ class AdminController extends Controller
             'question' => $request->question,
             ]);
 
-        $loop = 0;
-        foreach ($question->choices as $choice) {
-            $loop++;
-            $check = "check" . $loop;
+        foreach ($question->choices as $n => $choice) {
+            $n++;
+            $check = "check" . $n;
             if ($request->$check == "on") {
                 $is_correct = true;
             } else {
                 $is_correct = false;
             }
 
-            $choice_number = "choice" . $loop;
+            $choice_number = "choice" . $n;
             $choice = Choice::findOrFail($choice->id);
             $choice->update([
                 'choice' => $request->$choice_number,

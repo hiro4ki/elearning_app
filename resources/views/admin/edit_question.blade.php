@@ -30,16 +30,13 @@
 
               <div class="col-md-6">
                 <div class="form-group">
-                  @foreach ($question->choices as $choice)
-                  @php
-                  $n = $loop->index + 1;
-                  @endphp
+                  @foreach ($question->choices as $n => $choice)
                   <div class="custom-control custom-checkbox mt-2">
-                    <input type="checkbox" class="custom-control-input" id="custom-check-{{ $n }}" name="check{{ $n }}"
-                      {{ $choice->is_correct ? 'checked': "" }}>
-                    <label class="custom-control-label" for="custom-check-{{ $n }}">Choice{{ $n }}:</label>
+                    <input type="checkbox" class="custom-control-input" id="custom-check-{{ $n+1 }}"
+                      name="check{{ $n+1 }}" {{ $choice->is_correct ? 'checked': "" }}>
+                    <label class="custom-control-label" for="custom-check-{{ $n+1 }}">Choice{{ $n+1 }}:</label>
                   </div>
-                  <input name="choice{{ $n }}" type="text" id="text{{ $n }}" class="form-control"
+                  <input name="choice{{ $n+1 }}" type="text" id="text{{ $n+1 }}" class="form-control"
                     value="{{ $choice->choice }}" required>
                   @endforeach
                 </div>
