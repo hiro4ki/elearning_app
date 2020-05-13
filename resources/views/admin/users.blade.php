@@ -25,7 +25,7 @@
           Edit
         </a>
         <a class="btn btn-primary mr-1" href="/admin/category/{{ $category->id }}/question/add">Add question</a>
-        <form action="{{ route('category.destroy', ['id' => $category->id]) }}" method="POST">
+        <form action="{{ route('question.destroy', ['id' => $category->id]) }}" method="POST">
           @method("DELETE")
           @csrf
           <button type="submit button" class="btn btn-danger">Delete</button>

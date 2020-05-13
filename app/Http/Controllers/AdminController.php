@@ -121,9 +121,10 @@ class AdminController extends Controller
 
     public function destroy_question($id)
     {
-        $post = Question::findOrFail($id);
-        $post->delete();
+        $question = Question::findOrFail($id);
+        $category_id = $question->category_id;
+        $question->delete();
 
-        return redirect(route("admin.edit_category"));
+        return redirect(route("admin.edit_category", ['id' => $category_id]));
     }
 }
