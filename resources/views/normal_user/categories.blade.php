@@ -1,7 +1,6 @@
 @extends('layouts.app')
 
 @section('content')
-
 <div class="container">
   <h1 class="mb-3">Categories</h1>
   <div class=" row">
@@ -15,7 +14,15 @@
           <h4 class="card-text">{{ $category->description }}</h4>
           <p class="card-text"><small>最終更新3分前</small></p>
           <div style="position: absolute; top: 82%; left: 70%;">
-            <a href="#" class="btn btn-primary px-5">Start</a>
+
+            <form action="{{ route('user.create_lesson') }}" method="POST">
+              @csrf
+              <button class="btn btn-primary px-5">Start</button>
+              <input type="hidden" name="user_id" value="{{$user->id}}">
+              <input type="hidden" name="category_id" value="{{$category->id}}">
+              <input type="hidden" name="question_number" value=0>
+            </form>
+
           </div>
         </div>
       </div>

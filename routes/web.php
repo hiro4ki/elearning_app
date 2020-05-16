@@ -33,4 +33,8 @@ Route::post('/admin/category/store/', 'AdminController@category_store')->name('a
 Route::delete('/admin/category/{id}/destroy', 'AdminController@destroy_category')->name('category.destroy');
 
 // normal_user
-Route::get('/user/categories', 'UserController@categories')->name('user.categories');
+Route::get('/user/home', 'UserController@home')->name('user.home');
+Route::get('/user/{id}/categories', 'UserController@categories')->name('user.categories');
+Route::post('/lesson/create', 'UserController@create_lesson')->name('user.create_lesson');
+Route::get('/lesson/{lesson}/answer', 'UserController@lesson_answer')->name('user.lesson_answer');
+Route::post('/answer/{choice}/store', 'UserController@store_answer')->name('user.store_answer');
