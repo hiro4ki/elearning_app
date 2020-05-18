@@ -29,7 +29,8 @@
             </div>
 
             <div class="col-md-6 text-left">
-              <a href="#" name="stop" role="button" class="btn btn-secondary mr-2">
+              <a href="{{ route('user.categories', ['id' => auth()->user()->id]) }}" name="stop" role="button"
+                class="btn btn-secondary mr-2">
                 Stop
               </a>
             </div>

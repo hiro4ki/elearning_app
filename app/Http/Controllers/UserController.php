@@ -49,7 +49,10 @@ class UserController extends Controller
         if ($request->page <= $questions->total()) {
             return view('normal_user.lesson_answer', compact('category', 'questions'));
         } else {
-            return dd("Finished the category");
+            $lesson->update([
+                'completed' => 1,
+            ]);
+            return redirect()->route('user.lesson_result', ['lesson' => $lesson->id]);
         }
     }
 
@@ -63,5 +66,11 @@ class UserController extends Controller
         ]);
 
         return redirect()->route('user.lesson_answer', ['lesson' => $lesson_id, 'page' => $request->page+1]);
+    }
+
+    public function lesson_result(Lesson $lesson)
+    {
+        $category = Category::findOrFail($lesson->category_id);
+        return view('normal_user.lesson_result', compact('lesson', 'category'));
     }
 }
