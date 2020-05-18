@@ -76,8 +76,7 @@ class AdminController extends Controller
 
         for ($i=1; $i <= 4; $i++) {
             $choice = "choice" . $i;
-            $check = "check" . $i;
-            if ($request->$check == "on") {
+            if ($request->radio == $i) {
                 $is_correct = true;
             } else {
                 $is_correct = false;
