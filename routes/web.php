@@ -40,3 +40,5 @@ Route::get('/lesson/{lesson}/answer', 'UserController@lesson_answer')->name('use
 Route::post('/answer/{choice}/store', 'UserController@store_answer')->name('user.store_answer');
 Route::get('/lesson/{lesson}/result', 'UserController@lesson_result')->name('user.lesson_result');
 Route::get('/user/{id}/list', 'UserController@user_list')->name('user.user_list');
+Route::get('/user/follow/{id}', 'UserController@follow')->name('user.follow');
+Route::get('/user/unfollow/{id}', 'UserController@unfollow')->name('user.unfollow');
