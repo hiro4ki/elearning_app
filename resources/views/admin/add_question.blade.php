@@ -29,48 +29,31 @@
 
               <div class="col-md-6">
                 <div class="form-group">
-                  <div class="custom-control custom-checkbox mt-2">
-                    <input type="checkbox" class="custom-control-input" id="custom-check-1" name="check1">
-                    <label class="custom-control-label" for="custom-check-1">Choice1:</label>
-                  </div>
-                  <input name="choice1" type="text" id="text1" class="form-control" required>
-
-                  <div class="custom-control custom-checkbox mt-2">
-                    <input type="checkbox" class="custom-control-input" id="custom-check-2" name="check2">
-                    <label class="custom-control-label" for="custom-check-2">Choice2:</label>
-                  </div>
-                  <input name="choice2" type="text" id="text1" class="form-control" required>
-
-                  <div class="custom-control custom-checkbox mt-2">
-                    <input type="checkbox" class="custom-control-input" id="custom-check-3" name="check3">
-                    <label class="custom-control-label" for="custom-check-3">Choice3:</label>
-                  </div>
-                  <input name="choice3" type="text" id="text1" class="form-control" required>
-
-                  <div class="custom-control custom-checkbox mt-2">
-                    <input type="checkbox" class="custom-control-input" id="custom-check-4" name="check4">
-                    <label class="custom-control-label" for="custom-check-4">Choice4:</label>
-                  </div>
-                  <input name="choice4" type="text" id="text1" class="form-control" required>
-
+                  @for ($i = 1; $i <= 4; $i++) <div class="custom-control custom-radio mt-2">
+                    <input type="radio" class="custom-control-input" id="customRadio{{ $i }}" name="radio"
+                      value={{ $i }}>
+                    <label class="custom-control-label" for="customRadio{{ $i }}">Choice{{ $i }}:</label>
                 </div>
+                <input name="choice{{ $i }}" type="text" id="text{{ $i }}" class="form-control" required>
+                @endfor
               </div>
             </div>
-
-            <div class="col-md-12 text-right">
-              <div class="buttons">
-                <button type="submit" class="btn btn-primary btn-sm px-5 py-2">Add</button>
-                <a href="{{ route('admin.users') }}" name="back" role="button" class="btn btn-secondary mr-2">
-                  Back
-                </a>
-              </div>
-            </div>
-          </form>
         </div>
 
+        <div class="col-md-12 text-right">
+          <div class="buttons">
+            <button type="submit" class="btn btn-primary btn-sm px-5 py-2">Add</button>
+            <a href="{{ route('admin.users') }}" name="back" role="button" class="btn btn-secondary mr-2">
+              Back
+            </a>
+          </div>
+        </div>
+        </form>
       </div>
+
     </div>
   </div>
+</div>
 </div>
 </div>
 @endsection

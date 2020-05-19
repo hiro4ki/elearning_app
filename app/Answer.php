@@ -17,4 +17,13 @@ class Answer extends Model
     {
         return $this->belongsTo("App\Lesson");
     }
+
+    public function isCorrect()
+    {
+        if ($this->choice->is_correct) {
+            return true;
+        } else {
+            return false;
+        }
+    }
 }

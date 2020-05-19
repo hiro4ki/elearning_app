@@ -22,4 +22,16 @@ class Lesson extends Model
     {
         return $this->hasMany('App\Answer');
     }
+
+    public function countCorrectAnswers()
+    {
+        $count = 0;
+        foreach ($this->answers as $answer) {
+            if ($answer->isCorrect()) {
+                $count++;
+            }
+        }
+
+        return $count;
+    }
 }

@@ -18,4 +18,15 @@ class Question extends Model
     {
         return $this->belongsTo('App\Category');
     }
+
+    public function getCorrectAnswer()
+    {
+        foreach ($this->choices as $choice) {
+            if ($choice->is_correct) {
+                return $choice->choice;
+            }
+        }
+
+        return "ERROR: There is no correct answer";
+    }
 }
