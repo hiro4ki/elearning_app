@@ -7,7 +7,7 @@
     <div class="h2 col-md-6 text-right">{{ $lesson->countCorrectAnswers() }} / {{ $category->questions->count() }}</div>
   </div>
   <table class=" table">
-    <caption>Category Name</caption>
+    <caption>{{ $category->title }}</caption>
     <tr class="text-center">
       <th>Correctness</th>
       <th>Question</th>
