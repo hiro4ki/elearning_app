@@ -95,4 +95,9 @@ class UserController extends Controller
 
         return back();
     }
+
+    public function mypage()
+    {
+        return view('normal_user.mypage');
+    }
 }
