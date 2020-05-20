@@ -73,4 +73,26 @@ class UserController extends Controller
         $category = Category::findOrFail($lesson->category_id);
         return view('normal_user.lesson_result', compact('lesson', 'category'));
     }
+
+    public function user_list()
+    {
+        $users = User::all();
+        return view('normal_user/user_list', compact('users'));
+    }
+
+    public function follow($id)
+    {
+        $followed_user = User::find($id);
+        auth()->user()->followings()->attach($followed_user);
+
+        return back();
+    }
+
+    public function unfollow($id)
+    {
+        $followed_user = User::find($id);
+        auth()->user()->followings()->detach($followed_user);
+
+        return back();
+    }
 }
