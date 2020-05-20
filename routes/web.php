@@ -42,7 +42,4 @@ Route::get('/lesson/{lesson}/result', 'UserController@lesson_result')->name('use
 Route::get('/user/{id}/list', 'UserController@user_list')->name('user.user_list');
 Route::get('/user/follow/{id}', 'UserController@follow')->name('user.follow');
 Route::get('/user/unfollow/{id}', 'UserController@unfollow')->name('user.unfollow');
-<<<<<<< HEAD
 Route::get('/user/mypage', 'UserController@mypage')->name('user.mypage');
-=======
->>>>>>> 485af65... [user-list]implement (un)follow func to user list page
