@@ -9,25 +9,23 @@
         <tr>
           <td class="text-center" width="350px">
             <img src="https://pbs.twimg.com/media/DfvxiaRUwAAsmLi.jpg" alt="user img" width="50%">
-            <h3 class="card-title m-3">{{ auth()->user()->name }}</h3>
-            <h4 class="card-title m-3">{{ auth()->user()->email }}</h4>
-            <a href="#" class="btn btn-primary btn-sm">Edit
-              profile</a>
+            <h3 class="card-title m-3">{{ $user->name }}</h3>
+            <h4 class="card-title m-3">{{ $user->email }}</h4>
             <hr>
 
             <div class="row justify-content-center text-center">
               <div class="col-md-6 following">
                 <div>
-                  <a href="{{ route('user.followings', ['id' => auth()->user()->id]) }}">
-                    {{ auth()->user()->followings()->count() }}
+                  <a href="{{ route('user.followings', ['id' => $user->id]) }}">
+                    {{ $user->followings()->count() }}
                   </a>
                 </div>
                 <div>following</div>
               </div>
               <div class="col-md-6 followers">
                 <div>
-                  <a href="{{ route('user.followers', ['id' => auth()->user()->id]) }}">
-                    {{ auth()->user()->followers()->count() }}
+                  <a href="{{ route('user.followers', ['id' => $user->id]) }}">
+                    {{ $user->followers()->count() }}
                   </a>
                 </div>
                 <div>followers</div>
@@ -36,10 +34,9 @@
             <hr>
             <div class="card text-center">
               <div class="card-header">
-                <div><a
-                    href="#">{{ auth()->user()->lessons->where('completed', true)->groupBy('category_id')->count() }}</a>
+                <div><a href="#">{{ $user->lessons->where('completed', true)->groupBy('category_id')->count() }}</a>
                 </div>
-                <div>Categories you learned</div>
+                <div>Categories {{ $user->name }} learned</div>
               </div>
             </div>
           </td>
@@ -51,7 +48,7 @@
         <div class="card-header">
           <h2 class="text-center">Dashboard</h2>
 
-          @foreach (auth()->user()->lessons as $lesson)
+          @foreach ($user->lessons as $lesson)
           @if ($lesson->completed)
           <div class="card mt-3">
             <div class="row no-gutters">
@@ -61,7 +58,7 @@
               <div class="col-md-10">
                 <div class="card-body">
                   <blockquote class="blockquote mb-0">
-                    <p>You learned <a href="#">{{ $lesson->category->title }}</a>!</p>
+                    <p>{{ $user->name }} learned <a href="#">{{ $lesson->category->title }}</a>!</p>
                     <footer class="blockquote-footer"> {{ $lesson->updated_at }} </cite>
                     </footer>
                   </blockquote>

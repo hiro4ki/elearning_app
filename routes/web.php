@@ -43,3 +43,6 @@ Route::get('/user/{id}/list', 'UserController@user_list')->name('user.user_list'
 Route::get('/user/follow/{id}', 'UserController@follow')->name('user.follow');
 Route::get('/user/unfollow/{id}', 'UserController@unfollow')->name('user.unfollow');
 Route::get('/user/mypage', 'UserController@mypage')->name('user.mypage');
+Route::get('/user/{id}/followings', 'UserController@following_users')->name('user.followings');
+Route::get('/user/{id}/followers', 'UserController@follower_users')->name('user.followers');
+Route::get('/user/{id}/profile', 'UserController@profile')->name('user.profile');

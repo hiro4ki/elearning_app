@@ -100,4 +100,27 @@ class UserController extends Controller
     {
         return view('normal_user.mypage');
     }
+
+    public function following_users($id)
+    {
+        $user = User::findOrFail($id);
+        $followings = $user->followings()->get();
+
+        return view("normal_user.followings", compact("followings", "user"));
+    }
+
+    public function follower_users($id)
+    {
+        $user = User::findOrFail($id);
+        $followers = $user->followers()->get();
+
+        return view("normal_user.followers", compact("followers", "user"));
+    }
+
+    public function profile($id)
+    {
+        $user = User::findOrFail($id);
+
+        return view('normal_user.profile', compact('user'));
+    }
 }
