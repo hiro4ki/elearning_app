@@ -21,10 +21,9 @@
       <td>{{ $category->title }}</td>
       <td>{{ $category->description }}</td>
       <td class="d-flex justify-content-center">
-        <a href="/admin/category/{{ $category->id }}/edit" class="btn btn-secondary mr-1">
+        <a href="{{ route('admin.edit_category', ['id' => $category->id]) }}" class="btn btn-secondary mr-1">
           Edit
         </a>
-        <a class="btn btn-primary mr-1" href="/admin/category/{{ $category->id }}/question/add">Add question</a>
         <form action="{{ route('question.destroy', ['id' => $category->id]) }}" method="POST">
           @method("DELETE")
           @csrf

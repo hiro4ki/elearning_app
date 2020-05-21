@@ -43,7 +43,8 @@
         <div class="col-md-12 text-right">
           <div class="buttons">
             <button type="submit" class="btn btn-primary btn-sm px-5 py-2">Add</button>
-            <a href="{{ route('admin.users') }}" name="back" role="button" class="btn btn-secondary mr-2">
+            <a href="{{ route('admin.edit_category', ['id' => $category->id]) }}" name="back" role="button"
+              class="btn btn-secondary mr-2">
               Back
             </a>
           </div>

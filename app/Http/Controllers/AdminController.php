@@ -101,7 +101,7 @@ class AdminController extends Controller
         foreach ($question->choices as $n => $choice) {
             $n++;
             $check = "check" . $n;
-            if ($request->$check == "on") {
+            if ($request->radio == $n) {
                 $is_correct = true;
             } else {
                 $is_correct = false;
@@ -115,7 +115,7 @@ class AdminController extends Controller
                 ]);
         }
 
-        return redirect(route("admin.edit_category", ['id' => $question->category_id]));
+        return redirect()->route("admin.edit_category", ['id' => $question->category_id]);
     }
 
     public function destroy_question($id)
