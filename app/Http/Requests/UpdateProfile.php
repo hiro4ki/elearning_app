@@ -25,7 +25,7 @@ class UpdateProfile extends FormRequest
     {
         return [
             'name' => ['required', 'string', 'max:255'],
-            'email' => ['required', 'string', 'email', 'max:255'],
+            'email' => ['required', 'string', 'email', 'max:255', 'unique:users,email,'.auth()->user()->id,],
             'password' => ['nullable', 'string', 'min:6', 'confirmed'],
         ];
     }
