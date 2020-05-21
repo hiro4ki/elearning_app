@@ -8,10 +8,11 @@
       <table class="table table-bordered mt-4">
         <tr>
           <td class="text-center" width="350px">
-            <img src="https://pbs.twimg.com/media/DfvxiaRUwAAsmLi.jpg" alt="user img" width="50%">
+            <img src="https://pbs.twimg.com/media/DfvxiaRUwAAsmLi.jpg" alt="user img" width="50%"
+              class="rounded-circle img-thumbnail">
             <h3 class="card-title m-3">{{ auth()->user()->name }}</h3>
             <h4 class="card-title m-3">{{ auth()->user()->email }}</h4>
-            <a href="#" class="btn btn-primary btn-sm">Edit
+            <a href="{{ route('user.edit_profile') }}" class="btn btn-primary btn-sm">Edit
               profile</a>
             <hr>
 
@@ -56,7 +57,8 @@
           <div class="card mt-3">
             <div class="row no-gutters">
               <div class="col-md-2 align-self-center">
-                <img src="https://pbs.twimg.com/media/DfvxiaRUwAAsmLi.jpg" class="card-img" alt="user_img">
+                <img src="https://pbs.twimg.com/media/DfvxiaRUwAAsmLi.jpg" class="card-img rounded-circle img-thumbnail"
+                  alt="user_img">
               </div>
               <div class="col-md-10">
                 <div class="card-body">
