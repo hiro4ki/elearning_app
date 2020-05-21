@@ -31,10 +31,10 @@
               <div class="col-md-6">
                 <div class="form-group">
                   @foreach ($question->choices as $n => $choice)
-                  <div class="custom-control custom-checkbox mt-2">
-                    <input type="checkbox" class="custom-control-input" id="custom-check-{{ $n+1 }}"
-                      name="check{{ $n+1 }}" {{ $choice->is_correct ? 'checked': "" }}>
-                    <label class="custom-control-label" for="custom-check-{{ $n+1 }}">Choice{{ $n+1 }}:</label>
+                  <div class="custom-control custom-radio mt-2">
+                    <input type="radio" class="custom-control-input" id="customRadio{{ $n+1 }}" name="radio"
+                      value={{ $n+1 }} {{ $choice->is_correct ? 'checked': "" }}>
+                    <label class="custom-control-label" for="customRadio{{ $n+1 }}">Choice{{ $n+1 }}:</label>
                   </div>
                   <input name="choice{{ $n+1 }}" type="text" id="text{{ $n+1 }}" class="form-control"
                     value="{{ $choice->choice }}" required>
@@ -45,7 +45,8 @@
               <div class="col-md-12 text-right">
                 <div class="buttons">
                   <button type="submit" class="btn btn-primary btn-sm px-5 py-2">Save</button>
-                  <a href="{{ route('admin.users') }}" name="back" role="button" class="btn btn-secondary mr-2">
+                  <a href="{{ route('admin.edit_category', ['id' => $question->category_id]) }}" name="back"
+                    role="button" class="btn btn-secondary mr-2">
                     Back
                   </a>
                 </div>
