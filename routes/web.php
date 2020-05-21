@@ -46,3 +46,5 @@ Route::get('/user/mypage', 'UserController@mypage')->name('user.mypage');
 Route::get('/user/{id}/followings', 'UserController@following_users')->name('user.followings');
 Route::get('/user/{id}/followers', 'UserController@follower_users')->name('user.followers');
 Route::get('/user/{id}/profile', 'UserController@profile')->name('user.profile');
+Route::get('/user/mypage/edit', 'UserController@edit_profile')->name('user.edit_profile');
+Route::patch('/user/mypage/update', 'UserController@update_profile')->name('user.update_profile');

@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Hash;
+use App\Http\Requests\UpdateProfile;
 use App\Category;
 use App\Lesson;
 use App\User;
@@ -122,5 +124,22 @@ class UserController extends Controller
         $user = User::findOrFail($id);
 
         return view('normal_user.profile', compact('user'));
+    }
+    
+    public function edit_profile()
+    {
+        return view('normal_user.edit_profile');
+    }
+
+    public function update_profile(UpdateProfile $request)
+    {
+        $user = User::findOrFail(auth()->user()->id);
+        $user->update([
+            'name' => $request->name,
+            'email' => $request->email,
+            'password' => Hash::make($request->password),
+        ]);
+
+        return redirect()->route('user.mypage');
     }
 }
