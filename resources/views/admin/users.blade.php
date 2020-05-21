@@ -24,7 +24,7 @@
         <a href="{{ route('admin.edit_category', ['id' => $category->id]) }}" class="btn btn-secondary mr-1">
           Edit
         </a>
-        <form action="{{ route('question.destroy', ['id' => $category->id]) }}" method="POST">
+        <form action="{{ route('category.destroy', ['id' => $category->id]) }}" method="POST">
           @method("DELETE")
           @csrf
           <button type="submit button" class="btn btn-danger">Delete</button>
