@@ -133,12 +133,23 @@ class UserController extends Controller
 
     public function update_profile(UpdateProfile $request)
     {
+        if ($request->email != auth()->user()->email && User::all()->where('email', $request->email)->first()) {
+            $validatedData = $request->validate([
+                'email' => 'unique:users',
+            ]);
+        }
+
         $user = User::findOrFail(auth()->user()->id);
         $user->update([
             'name' => $request->name,
             'email' => $request->email,
-            'password' => Hash::make($request->password),
         ]);
+
+        if ($request->password) {
+            $user->update([
+                'password' => Hash::make($request->password),
+            ]);
+        }
 
         return redirect()->route('user.mypage');
     }
