@@ -8,7 +8,7 @@
       <table class="table table-bordered mt-4">
         <tr>
           <td class="text-center" width="350px">
-            <img src="https://pbs.twimg.com/media/DfvxiaRUwAAsmLi.jpg" alt="user img" width="50%">
+            <img src="https://blog-imgs-32.fc2.com/s/c/h/schizoid21/oyurusi.jpg" alt="user img" width="50%">
             <h3 class="card-title m-3">{{ $user->name }}</h3>
             <h4 class="card-title m-3">{{ $user->email }}</h4>
             <hr>

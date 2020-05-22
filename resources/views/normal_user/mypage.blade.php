@@ -8,7 +8,7 @@
       <table class="table table-bordered mt-4">
         <tr>
           <td class="text-center" width="350px">
-            <img src="https://pbs.twimg.com/media/DfvxiaRUwAAsmLi.jpg" alt="user img" width="50%"
+            <img src="https://blog-imgs-32.fc2.com/s/c/h/schizoid21/oyurusi.jpg" alt="user img" width="50%"
               class="rounded-circle img-thumbnail">
             <h3 class="card-title m-3">{{ auth()->user()->name }}</h3>
             <h4 class="card-title m-3">{{ auth()->user()->email }}</h4>
@@ -41,6 +41,10 @@
                     href="#">{{ auth()->user()->lessons->where('completed', true)->groupBy('category_id')->count() }}</a>
                 </div>
                 <div>Categories you learned</div>
+                <div class="card-header mt-2">
+                  <div><a href="{{route('user.words_learned')}}">Words you learned</a>
+                  </div>
+                </div>
               </div>
             </div>
           </td>
@@ -57,13 +61,15 @@
           <div class="card mt-3">
             <div class="row no-gutters">
               <div class="col-md-2 align-self-center">
-                <img src="https://pbs.twimg.com/media/DfvxiaRUwAAsmLi.jpg" class="card-img rounded-circle img-thumbnail"
-                  alt="user_img">
+                <img src="https://blog-imgs-32.fc2.com/s/c/h/schizoid21/oyurusi.jpg"
+                  class="card-img rounded-circle img-thumbnail" alt="user_img">
               </div>
               <div class="col-md-10">
                 <div class="card-body">
                   <blockquote class="blockquote mb-0">
-                    <p>You learned <a href="#">{{ $lesson->category->title }}</a>!</p>
+                    <p>You learned <a
+                        href="{{ route('user.lesson_result', ['lesson' => $lesson->id]) }}">{{ $lesson->category->title }}</a>!
+                    </p>
                     <footer class="blockquote-footer"> {{ $lesson->updated_at }} </cite>
                     </footer>
                   </blockquote>

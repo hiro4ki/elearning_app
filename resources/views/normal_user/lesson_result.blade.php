@@ -4,7 +4,7 @@
 <div class="container">
   <div class="row d-flex">
     <div class="h1 col-md-6">Result</div>
-    <div class="h2 col-md-6 text-right">{{ $lesson->countCorrectAnswers() }} / {{ $category->questions->count() }}</div>
+    <div class="h2 col-md-6 text-right">{{ $lesson->countCorrectAnswers() }} / {{ $lesson->answers->count() }}</div>
   </div>
   <table class=" table">
     <caption>{{ $category->title }}</caption>

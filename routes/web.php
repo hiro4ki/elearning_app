@@ -48,3 +48,4 @@ Route::get('/user/{id}/followers', 'UserController@follower_users')->name('user.
 Route::get('/user/{id}/profile', 'UserController@profile')->name('user.profile');
 Route::get('/user/mypage/edit', 'UserController@edit_profile')->name('user.edit_profile');
 Route::patch('/user/mypage/update', 'UserController@update_profile')->name('user.update_profile');
+Route::get('/user/mypage/words_learned', 'UserController@words_learned')->name('user.words_learned');

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Pagination\LengthAwarePaginator;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use App\Http\Requests\UpdateProfile;
@@ -146,5 +147,25 @@ class UserController extends Controller
         }
 
         return redirect()->route('user.mypage');
+    }
+
+    public function words_learned()
+    {
+        // get completed lessons
+        $all_lessons = auth()->user()->lessons->where('completed', true)->groupBy('category_id');
+
+        // insert the newest lessons of each category to array
+        $lessons = array();
+        foreach ($all_lessons as $lesson) {
+            $lessons[] = $lesson[$lesson->count() - 1];
+        }
+
+        // count all answers
+        $sum = 0;
+        foreach ($lessons as $lesson) {
+            $sum += $lesson->answers->count();
+        }
+
+        return view('normal_user.words_learned', compact('lessons', 'sum'));
     }
 }
