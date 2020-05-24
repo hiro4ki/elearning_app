@@ -50,7 +50,7 @@
                           </a> 
                           followed
                           <a href="{{ route('user.profile', ['id' => $relationships[$j]->followed_id]) }}">
-                            {{ $relationships[$j]->follower() == auth()->user() ? $relationships[$j]->followed()->name : "You" }}
+                            {{ $relationships[$j]->follower() == auth()->user() ? "You" : $relationships[$j]->followed()->name }}
                           </a>!
                           @php
                           $flag = $j+1;
