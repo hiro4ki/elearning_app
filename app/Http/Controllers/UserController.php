@@ -11,14 +11,10 @@ use App\Lesson;
 use App\User;
 use App\Choice;
 use App\Answer;
+use App\Relationship;
 
 class UserController extends Controller
 {
-    public function home()
-    {
-        return view('normal_user.home');
-    }
-
     public function categories($id)
     {
         $user = User::findOrFail($id);
@@ -167,5 +163,40 @@ class UserController extends Controller
         }
 
         return view('normal_user.words_learned', compact('lessons', 'sum'));
+    }
+
+    public function dashboard()
+    {
+        $relationships = Relationship::where('follower_id', auth()->user()->id)->orWhere('followed_id', auth()->user()->id)->orderBy('updated_at', 'desc')->get();
+
+        // auth user's lessons
+        // count all learned words
+        $completed_lessons = auth()->user()->lessons->where('completed', true)->groupBy('category_id');
+        $ids = array();
+        $l_lessons = array();
+        foreach ($completed_lessons as $lesson) {
+            $ids[] = $lesson->max('id');
+            $l_lessons[] = $lesson[$lesson->count() - 1];
+        }
+        $sum = 0;
+        foreach ($l_lessons as $lesson) {
+            $sum += $lesson->answers->count();
+        }
+
+        // lessons that all users followed by auth user
+        $users = auth()->user()->followings;
+        foreach ($users as $user) {
+            foreach ($user->lessons->where('completed', true)->groupBy('category_id') as $lesson) {
+                $ids[] = $lesson->max('id');
+            }
+        }
+        
+        rsort($ids);
+        $lessons = array();
+        foreach ($ids as $id) {
+            $lessons[] = Lesson::find($id);
+        }
+
+        return view('normal_user.dashboard', compact('sum', 'lessons', 'relationships'));
     }
 }

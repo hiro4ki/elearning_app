@@ -37,6 +37,11 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
     ];
 
+    public function relationships()
+    {
+        return $this->hasMany('App\Relationship');
+    }
+
     public function lessons()
     {
         return $this->hasMany('App\Lesson');
@@ -44,12 +49,12 @@ class User extends Authenticatable
 
     public function followings()
     {
-        return $this->belongsToMany('App\User', 'relationships', 'follower_id', 'followed_id');
+        return $this->belongsToMany('App\User', 'relationships', 'follower_id', 'followed_id')->withTimestamps();
     }
 
     public function followers()
     {
-        return $this->belongsToMany('App\User', 'relationships', 'followed_id', 'follower_id');
+        return $this->belongsToMany('App\User', 'relationships', 'followed_id', 'follower_id')->withTimestamps();
     }
 
     public function is_following($id)

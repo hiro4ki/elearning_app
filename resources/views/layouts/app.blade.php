@@ -26,7 +26,7 @@
         <nav class="navbar navbar-expand-md navbar-light navbar-laravel">
             <div class="container">
                 <a class="navbar-brand" href="{{ url('/') }}">
-                    The Greatest Greetings
+                    E-Learning
                 </a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse"
                     data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
@@ -53,6 +53,18 @@
                         </li>
                         @endif
                         @else
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ route('user.dashboard') }}">Dashboard</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link"
+                                href="{{ route('user.categories', ['id' => auth()->user()->id]) }}">Categories</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ route('user.user_list', ['id' => auth()->user()->id]) }}">All
+                                Users</a>
+                        </li>
+
                         <li class="nav-item dropdown">
                             <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button"
                                 data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
@@ -62,14 +74,6 @@
                             <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
                                 <a class="dropdown-item" href="{{ route('user.mypage') }}">
                                     My page
-                                </a>
-                                <a class="dropdown-item"
-                                    href="{{ route('user.categories', ['id' => auth()->user()->id]) }}">
-                                    Categories
-                                </a>
-                                <a class="dropdown-item"
-                                    href="{{ route('user.user_list', ['id' => auth()->user()->id]) }}">
-                                    All Users
                                 </a>
                                 <a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">
