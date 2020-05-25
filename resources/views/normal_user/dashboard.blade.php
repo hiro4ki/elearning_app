@@ -46,11 +46,11 @@
                       <blockquote class="blockquote mb-0">
                         <p>
                           <a href="{{ route('user.profile', ['id' => $relationships[$j]->follower_id]) }}">
-                            {{ $relationships[$j]->follower() == auth()->user() ? "You" : $relationships[$j]->follower()->name }}
+                            {{ $relationships[$j]->follower()->id == auth()->user()->id ? "You" : $relationships[$j]->follower()->name }}
                           </a> 
                           followed
                           <a href="{{ route('user.profile', ['id' => $relationships[$j]->followed_id]) }}">
-                            {{ $relationships[$j]->follower() == auth()->user() ? "You" : $relationships[$j]->followed()->name }}
+                            {{ $relationships[$j]->followed()->id == auth()->user()->id ? "You" : $relationships[$j]->followed()->name }}
                           </a>!
                           @php
                           $flag = $j+1;
