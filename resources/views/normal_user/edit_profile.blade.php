@@ -8,19 +8,19 @@
         <div class="card-header">
           <h1 class="text-center m-5">Edit Profile</h1>
 
-          <form method="POST" action="{{ route('user.update_profile', ['id' => auth()->user()->id]) }}">
+          <form method="POST" action="{{ route('user.update_profile', ['id' => auth()->user()->id]) }}" enctype="multipart/form-data">
             @method("PATCH")
             @csrf
             <div class="form-group row">
-              <label for="name" class="col-md-12 col-form-label text-center">
-                <img src="https://pbs.twimg.com/media/DfvxiaRUwAAsmLi.jpg" alt="avatar_image"
-                  class="rounded-circle img-thumbnail" width=30%>
+              <label for="name" class="col-md-5 col-form-label text-md-right">
+                <img src="/storage/profile_images/{{ auth()->user()->has_image() ? auth()->user()->id : '0' }}.jpg" alt="avatar_image" 
+                  class="rounded-circle img-thumbnail" width=50%>
               </label>
-              {{-- <h3 class="col-md-7 d-flex align-items-center">
-              <a type="btn" href="{{ route('users.edit.avatar', ['id' => $user->id]) }}">Change Avatar</a>
-              </h3> --}}
+              <div class="form-group col-md-7 d-flex align-items-center">
+                <input id="photo" type="file" name="photo">
+              </div>
             </div>
-
+            
             <div class="form-group row">
               <label for="name" class="col-md-4 col-form-label text-md-right">Name</label>
 
