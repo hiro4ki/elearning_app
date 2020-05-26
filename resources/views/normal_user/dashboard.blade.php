@@ -8,7 +8,7 @@
       <table class="table table-bordered mt-4">
         <tr>
           <td class="text-center" width="350px">
-            <img src="https://blog-imgs-32.fc2.com/s/c/h/schizoid21/oyurusi.jpg" alt="user img" width="50%"
+              <img src="/storage/profile_images/{{ auth()->user()->has_image() ? auth()->user()->id : '0' }}.jpg" alt="user img" width="50%"
               class="rounded-circle img-thumbnail">
             <h3 class="mt-2">{{ auth()->user()->name }}</h3>
             <div class="card text-center m-3">
@@ -38,8 +38,8 @@
               <div class="card mt-3">
                 <div class="row no-gutters">
                   <div class="col-md-2 align-self-center">
-                    <img src="https://blog-imgs-32.fc2.com/s/c/h/schizoid21/oyurusi.jpg"
-                      class="card-img rounded-circle img-thumbnail" alt="user_img">
+                      <img src="/storage/profile_images/{{ $relationships[$j]->follower()->has_image() ? $relationships[$j]->follower()->id : '0' }}.jpg"
+                        class="card-img rounded-circle img-thumbnail" alt="user_img">
                   </div>
                   <div class="col-md-10">
                     <div class="card-body">
@@ -67,8 +67,8 @@
             <div class="card mt-3">
               <div class="row no-gutters">
                 <div class="col-md-2 align-self-center">
-                  <img src="https://blog-imgs-32.fc2.com/s/c/h/schizoid21/oyurusi.jpg"
-                    class="card-img rounded-circle img-thumbnail" alt="user_img">
+                    <img src="/storage/profile_images/{{ $lessons[$i]->user->has_image() ? $lessons[$i]->user_id : 0 }}.jpg"
+                      class="card-img rounded-circle img-thumbnail" alt="user_img">
                 </div>
                 <div class="col-md-10">
                   <div class="card-body">
