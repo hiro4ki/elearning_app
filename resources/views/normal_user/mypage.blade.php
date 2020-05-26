@@ -54,9 +54,9 @@
     <div class="col-md-7">
       <div class="card mt-4">
         <div class="card-header">
-          <h2 class="text-center">Dashboard</h2>
+          <h2 class="text-center">Activities</h2>
 
-          @foreach (auth()->user()->lessons as $lesson)
+          @foreach (auth()->user()->lessons()->orderBy('updated_at', 'desc')->get() as $lesson)
           @if ($lesson->completed)
           <div class="card mt-3">
             <div class="row no-gutters">

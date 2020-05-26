@@ -11,7 +11,6 @@
             <img src="https://blog-imgs-32.fc2.com/s/c/h/schizoid21/oyurusi.jpg" alt="user img" width="50%"
               class="rounded-circle img-thumbnail">
             <h3 class="card-title m-3">{{ auth()->user()->name }}</h3>
-            <h4 class="card-title m-3">{{ auth()->user()->email }}</h4>
 
             <div class="card text-center">
               <div class="card-header">
@@ -38,7 +37,7 @@
               <td rowspan={{ $lesson->answers->count()+1 }}> {{ $lesson->category->title }} </td>
             </tr>
             @foreach ($lesson->answers as $answer)
-            <tr class="text-center {{ $answer->isCorrect() ? 'table-success' : 'table-danger' }}">
+            <tr class="text-center {{ $answer->isCorrect() ? 'table-success' : 'table-secondary' }}">
               <td>{{ $answer->choice->question->question }}</td>
               <td>{{ $answer->choice->question->getCorrectAnswer() }}</td>
             </tr>
