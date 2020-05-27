@@ -17,9 +17,19 @@
             </ul>
           </div>
           @endif
-          <form action="{{ route('admin.category_update', ['id' => $category->id]) }}" method="POST">
+          <form method="POST" action="{{ route('admin.category_update', ['id' => $category->id]) }}" enctype="multipart/form-data">
             @method("PATCH")
             @csrf
+            <div class="form-group row">
+              <label for="name" class="col-md-5 col-form-label text-md-right">
+                <img src="/storage/category_images/{{ $category->has_image() ? $category->id : '0' }}.jpg" alt="category_image" 
+                  class="img-thumbnail" width=100%>
+              </label>
+              <div class="col-md-7 d-flex align-items-center">
+                <input id="photo" type="file" name="photo">
+              </div>
+            </div>
+
             <div class="form-group">
               <label for="text1">Title:</label>
               <input name="title" type="text" id="text1" class="form-control" value="{{ $category->title }}" required>

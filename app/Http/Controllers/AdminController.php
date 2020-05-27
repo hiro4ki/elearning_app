@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 use App\Http\Requests\StoreCategoryPost;
 use App\Category;
 use App\Question;
@@ -41,11 +42,17 @@ class AdminController extends Controller
             "title" => $request->title,
             "description" => $request->description,
         ]);
+
         return redirect(route("admin.users"));
     }
 
     public function update_category(StoreCategoryPost $request, $id)
     {
+        if ($request->photo) {
+            Storage::disk('local')->delete('public/category_images/' . $id . '.jpg');
+            $request->photo->storeAs('public/category_images', $id . '.jpg');
+        }
+
         $category = Category::findOrFail($id);
         $category->update([
             'title' => $request->title,

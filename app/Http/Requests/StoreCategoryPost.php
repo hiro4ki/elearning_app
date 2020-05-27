@@ -24,7 +24,8 @@ class StoreCategoryPost extends FormRequest
     public function rules()
     {
         return [
-            'title' => 'required|unique:categories|max:20',
+            'photo' => 'nullable|file|image|mimes:jpeg,png',
+            'title' => 'required|max:20',
             'description' => 'required|max:255',
         ];
     }
