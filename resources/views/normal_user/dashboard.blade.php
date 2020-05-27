@@ -8,8 +8,7 @@
       <table class="table table-bordered mt-4">
         <tr>
           <td class="text-center" width="350px">
-              <img src="/storage/profile_images/{{ auth()->user()->has_image() ? auth()->user()->id : '0' }}.jpg" alt="user img" width="50%"
-              class="rounded-circle img-thumbnail">
+              <img src="/storage/profile_images/{{ auth()->user()->has_image() ? auth()->user()->id : '0' }}.jpg" alt="user img" width="50%" class="img-fluid rounded-circle img-thumbnail">
             <h3 class="mt-2">{{ auth()->user()->name }}</h3>
             <div class="card text-center m-3">
               <div class="card-header">
@@ -78,6 +77,7 @@
                           {{ $lessons[$i]->user_id == auth()->user()->id ? 'You' : $lessons[$i]->user->name }}
                         </a>
                         learned
+                        {{ $lessons[$i]->category->questions->count() }} words in
                         <a href="{{ route('user.lesson_result', ['lesson' => $lessons[$i]->id]) }}">
                           {{ $lessons[$i]->category->title }}
                         </a>!
