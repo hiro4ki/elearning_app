@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Pagination\LengthAwarePaginator;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Storage;
 use App\Http\Requests\UpdateProfile;
 use App\Category;
 use App\Lesson;
@@ -130,6 +131,11 @@ class UserController extends Controller
 
     public function update_profile(UpdateProfile $request)
     {
+        if ($request->photo) {
+            Storage::disk('local')->delete('public/profile_images/' . auth()->user()->id . '.jpg');
+            $request->photo->storeAs('public/profile_images', auth()->user()->id . '.jpg');
+        }
+
         $user = User::findOrFail(auth()->user()->id);
         $user->update([
             'name' => $request->name,

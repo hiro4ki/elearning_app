@@ -8,8 +8,7 @@
       <table class="table table-bordered mt-4">
         <tr>
           <td class="text-center" width="350px">
-            <img src="https://blog-imgs-32.fc2.com/s/c/h/schizoid21/oyurusi.jpg" alt="user img" width="50%"
-              class="rounded-circle img-thumbnail">
+            <img src="/storage/profile_images/{{ auth()->user()->has_image() ? auth()->user()->id : '0' }}.jpg" alt="user img" width="50%" class="rounded-circle img-thumbnail">
             <h3 class="card-title m-3">{{ auth()->user()->name }}</h3>
             <h4 class="card-title m-3">{{ auth()->user()->email }}</h4>
             <a href="{{ route('user.edit_profile') }}" class="btn btn-primary btn-sm">Edit
@@ -61,7 +60,7 @@
           <div class="card mt-3">
             <div class="row no-gutters">
               <div class="col-md-2 align-self-center">
-                <img src="https://blog-imgs-32.fc2.com/s/c/h/schizoid21/oyurusi.jpg"
+                <img src="/storage/profile_images/{{ auth()->user()->has_image() ? auth()->user()->id : '0' }}.jpg"
                   class="card-img rounded-circle img-thumbnail" alt="user_img">
               </div>
               <div class="col-md-10">

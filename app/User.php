@@ -5,6 +5,7 @@ namespace App;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
+use Illuminate\Support\Facades\Storage;
 
 class User extends Authenticatable
 {
@@ -64,5 +65,14 @@ class User extends Authenticatable
         } else {
             return false;
         }
+    }
+
+    public function has_image()
+    {
+        $has_image = false;
+        if (Storage::disk('local')->exists('public/profile_images/' . $this->id . '.jpg')) {
+            $has_image = true;
+        }
+        return $has_image;
     }
 }
