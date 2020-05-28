@@ -57,7 +57,7 @@ class AdminController extends Controller
         if ($request->photo) {
             $path = Storage::disk('s3')->putFileAs('/category_images', $request->photo, $id . '.jpg', 'public');
             $category->image = Storage::disk('s3')->url($path);
-            $user->save();
+            $category->save();
         }
             
         return redirect(route("admin.users"));
