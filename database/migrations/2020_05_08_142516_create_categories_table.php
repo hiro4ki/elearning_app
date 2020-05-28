@@ -17,6 +17,7 @@ class CreateCategoriesTable extends Migration
             $table->increments('id');
             $table->string('title');
             $table->text('description');
+            $table->string('image')->default('https://hiroaki-elearningsystem.s3-ap-northeast-1.amazonaws.com/category_images/0.jpg');
             $table->timestamps();
         });
     }

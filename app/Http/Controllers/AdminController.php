@@ -48,16 +48,17 @@ class AdminController extends Controller
 
     public function update_category(StoreCategoryPost $request, $id)
     {
-        if ($request->photo) {
-            Storage::disk('local')->delete('public/category_images/' . $id . '.jpg');
-            $request->photo->storeAs('public/category_images', $id . '.jpg');
-        }
-
         $category = Category::findOrFail($id);
         $category->update([
             'title' => $request->title,
             'description' => $request->description,
             ]);
+
+        if ($request->photo) {
+            $path = Storage::disk('s3')->putFileAs('/category_images', $request->photo, $id . '.jpg', 'public');
+            $category->image = Storage::disk('s3')->url($path);
+            $user->save();
+        }
             
         return redirect(route("admin.users"));
     }
