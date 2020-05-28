@@ -15,7 +15,7 @@
             <div class="card text-center m-3">
               <div class="card-header">
                 <h5>
-                  <a href="{{route('user.words_learned')}}">
+                  <a href="{{route('user.words_learned', ['id' => auth()->user()->id])}}">
                     Learned {{ $sum }} words
                   </a>
                 </h5>

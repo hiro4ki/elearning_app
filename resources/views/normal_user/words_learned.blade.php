@@ -8,13 +8,12 @@
       <table class="table table-bordered mt-4">
         <tr>
           <td class="text-center" width="350px">
-            <img src="https://blog-imgs-32.fc2.com/s/c/h/schizoid21/oyurusi.jpg" alt="user img" width="50%"
-              class="rounded-circle img-thumbnail">
-            <h3 class="card-title m-3">{{ auth()->user()->name }}</h3>
+            <img src="/storage/profile_images/{{ $user->has_image() ? $user->id : '0' }}.jpg" alt="user img" class="rounded-circle img-thumbnail" style="width: 150px; height: 150px; object-fit: contain;">
+            <h3 class="card-title m-3">{{ $user->name }}</h3>
 
             <div class="card text-center">
               <div class="card-header">
-                You learned {{ $sum }} words
+                {{ $user->name }} learned {{ $sum }} words
               </div>
             </div>
           </td>

@@ -121,7 +121,20 @@ class UserController extends Controller
     {
         $user = User::findOrFail($id);
 
-        return view('normal_user.profile', compact('user'));
+        // words user learned
+        $completed_lessons = $user->lessons->where('completed', true)->groupBy('category_id');
+        $ids = array();
+        $l_lessons = array();
+        foreach ($completed_lessons as $lesson) {
+            $ids[] = $lesson->max('id');
+            $l_lessons[] = $lesson[$lesson->count() - 1];
+        }
+        $sum = 0;
+        foreach ($l_lessons as $lesson) {
+            $sum += $lesson->answers->count();
+        }
+
+        return view('normal_user.profile', compact('user', 'sum'));
     }
     
     public function edit_profile()
@@ -151,10 +164,11 @@ class UserController extends Controller
         return redirect()->route('user.mypage');
     }
 
-    public function words_learned()
+    public function words_learned($id)
     {
+        $user = User::findOrFail($id);
         // get completed lessons
-        $all_lessons = auth()->user()->lessons->where('completed', true)->groupBy('category_id');
+        $all_lessons = $user->lessons->where('completed', true)->groupBy('category_id');
 
         // insert the newest lessons of each category to array
         $lessons = array();
@@ -168,7 +182,7 @@ class UserController extends Controller
             $sum += $lesson->answers->count();
         }
 
-        return view('normal_user.words_learned', compact('lessons', 'sum'));
+        return view('normal_user.words_learned', compact('user', 'lessons', 'sum'));
     }
 
     public function dashboard()

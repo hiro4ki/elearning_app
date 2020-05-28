@@ -3,7 +3,7 @@
 @section('content')
 <div class="container">
   <h1>
-    User's following {{ $user->name }}.
+    User's following <span class="font-weight-bold">{{ $user->name }}</span>.
   </h1>
   @foreach ($followers as $follow)
   @if ($follow->id == auth()->user()->id)
