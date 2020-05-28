@@ -8,7 +8,7 @@
       <table class="table table-bordered mt-4">
         <tr>
           <td class="text-center" width="350px">
-            <img src="/storage/profile_images/{{ auth()->user()->has_image() ? auth()->user()->id : '0' }}.jpg" alt="user img" width="50%" class="rounded-circle img-thumbnail">
+            <img src="/storage/profile_images/{{ auth()->user()->has_image() ? auth()->user()->id : '0' }}.jpg" alt="user img" class="rounded-circle img-thumbnail" style="width: 150px; height: 150px; object-fit: contain;">
             <h3 class="card-title m-3">{{ auth()->user()->name }}</h3>
             <h4 class="card-title m-3">{{ auth()->user()->email }}</h4>
             <a href="{{ route('user.edit_profile') }}" class="btn btn-primary btn-sm">Edit
@@ -61,7 +61,7 @@
             <div class="row no-gutters">
               <div class="col-md-2 align-self-center">
                 <img src="/storage/profile_images/{{ auth()->user()->has_image() ? auth()->user()->id : '0' }}.jpg"
-                  class="card-img rounded-circle img-thumbnail" alt="user_img">
+                  class="card-img rounded-circle img-thumbnail ml-1" alt="user_img" style="width: 100px; height: 100px; object-fit: contain;">
               </div>
               <div class="col-md-10">
                 <div class="card-body">

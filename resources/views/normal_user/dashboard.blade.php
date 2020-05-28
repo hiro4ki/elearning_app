@@ -8,7 +8,9 @@
       <table class="table table-bordered mt-4">
         <tr>
           <td class="text-center" width="350px">
-              <img src="/storage/profile_images/{{ auth()->user()->has_image() ? auth()->user()->id : '0' }}.jpg" alt="user img" width="50%" class="img-fluid rounded-circle img-thumbnail">
+            {{-- <div class="d-flex align-items-center justify-content-center" style="height: 200px;"> --}}
+              <img src="/storage/profile_images/{{ auth()->user()->has_image() ? auth()->user()->id : '0' }}.jpg" alt="user img" class="img-fluid rounded-circle img-thumbnail" style="width: 150px; height: 150px; object-fit: contain;">
+            {{-- </div> --}}
             <h3 class="mt-2">{{ auth()->user()->name }}</h3>
             <div class="card text-center m-3">
               <div class="card-header">
@@ -25,7 +27,6 @@
               </div>
             </div>
           </td>
-        </tr>
       </table>
     </div>
     <div class="col-md-7">
@@ -37,8 +38,7 @@
               <div class="card mt-3">
                 <div class="row no-gutters">
                   <div class="col-md-2 align-self-center">
-                      <img src="/storage/profile_images/{{ $relationships[$j]->follower()->has_image() ? $relationships[$j]->follower()->id : '0' }}.jpg"
-                        class="card-img rounded-circle img-thumbnail" alt="user_img">
+                      <img src="/storage/profile_images/{{ $relationships[$j]->follower()->has_image() ? $relationships[$j]->follower()->id : '0' }}.jpg" class="card-img rounded-circle img-thumbnail ml-1" alt="user_img" style="width: 100px; height: 100px; object-fit: contain;">
                   </div>
                   <div class="col-md-10">
                     <div class="card-body">
@@ -67,7 +67,7 @@
               <div class="row no-gutters">
                 <div class="col-md-2 align-self-center">
                     <img src="/storage/profile_images/{{ $lessons[$i]->user->has_image() ? $lessons[$i]->user_id : 0 }}.jpg"
-                      class="card-img rounded-circle img-thumbnail" alt="user_img">
+                      class="card-img rounded-circle img-thumbnail ml-1" alt="user_img" style="width: 100px; height: 100px; object-fit: contain;">
                 </div>
                 <div class="col-md-10">
                   <div class="card-body">

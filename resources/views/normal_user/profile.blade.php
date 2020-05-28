@@ -8,8 +8,7 @@
       <table class="table table-bordered mt-4">
         <tr>
           <td class="text-center" width="350px">
-            <img src="/storage/profile_images/{{ $user->has_image() ? $user->id : '0' }}.jpg" alt="user img" width="50%"
-              class="rounded-circle img-thumbnail">
+            <img src="/storage/profile_images/{{ $user->has_image() ? $user->id : '0' }}.jpg" alt="user img" class="rounded-circle img-thumbnail" style="width: 150px; height: 150px; object-fit: contain;">
             <h3 class="card-title m-3">{{ $user->name }}</h3>
             <h4 class="card-title m-3">{{ $user->email }}</h4>
             <hr>
@@ -54,7 +53,7 @@
           <div class="card mt-3">
             <div class="row no-gutters">
               <div class="col-md-2 align-self-center">
-                <img src="/storage/profile_images/{{ $user->has_image() ? $user->id : '0' }}.jpg" alt="user img" class="card-img rounded-circle img-thumbnail">
+                <img src="/storage/profile_images/{{ $user->has_image() ? $user->id : '0' }}.jpg" alt="user img" class="card-img rounded-circle img-thumbnail ml-1" style="width: 100px; height: 100px; object-fit: contain;">
               </div>
               <div class="col-md-10">
                 <div class="card-body">

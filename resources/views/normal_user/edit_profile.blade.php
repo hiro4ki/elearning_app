@@ -14,7 +14,7 @@
             <div class="form-group row">
               <label for="name" class="col-md-5 col-form-label text-md-right">
                 <img src="/storage/profile_images/{{ auth()->user()->has_image() ? auth()->user()->id : '0' }}.jpg" alt="avatar_image" 
-                  class="rounded-circle img-thumbnail" width=50%>
+                  class="rounded-circle img-thumbnail" style="width: 150px; height: 150px; object-fit: contain;">
               </label>
               <div class="form-group col-md-7 d-flex align-items-center">
                 <input id="photo" type="file" name="photo">
