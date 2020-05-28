@@ -36,12 +36,10 @@
             <hr>
             <div class="card text-center">
               <div class="card-header">
-                <div><a
-                    href="#">{{ auth()->user()->lessons->where('completed', true)->groupBy('category_id')->count() }}</a>
-                </div>
+                <div>{{ auth()->user()->lessons->where('completed', true)->groupBy('category_id')->count() }}</div>
                 <div>Categories you learned</div>
                 <div class="card-header mt-2">
-                  <div><a href="{{route('user.words_learned')}}">Words you learned</a>
+                  <div><a href="{{route('user.words_learned', ['id' => auth()->user()->id])}}">Words you learned</a>
                   </div>
                 </div>
               </div>

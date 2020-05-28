@@ -31,9 +31,13 @@
   </table>
 
   <div class="col-md-12 text-right">
+    <a href="{{ route('user.dashboard') }}" name="back" role="button"
+      class="btn btn-outline-primary btn-sm px-5 py-2">
+      <h6 class="mb-0">Dashboard</h6>
+    </a>
     <a href="{{ route('user.categories', ['id' => auth()->user()->id]) }}" name="back" role="button"
-      class="btn btn-primary btn-sm px-5 py-2">
-      Back to Categories
+      class="btn btn-outline-success btn-sm px-5 py-2">
+      <h6 class="mb-0">Categories</h6>
     </a>
   </div>
 

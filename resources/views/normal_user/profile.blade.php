@@ -34,9 +34,16 @@
             <hr>
             <div class="card text-center">
               <div class="card-header">
-                <div><a href="#">{{ $user->lessons->where('completed', true)->groupBy('category_id')->count() }}</a>
-                </div>
-                <div>Categories {{ $user->name }} learned</div>
+                <h5>
+                  <a href="{{route('user.words_learned', ['id' => $user->id])}}">
+                    Learned {{ $sum }} words
+                  </a>
+                </h5>
+                <h5>
+                  Learned
+                  {{ $user->lessons->where('completed', true)->groupBy('category_id')->count() }}
+                  categories
+                </h5>
               </div>
             </div>
           </td>
@@ -58,7 +65,7 @@
               <div class="col-md-10">
                 <div class="card-body">
                   <blockquote class="blockquote mb-0">
-                    <p>{{ $user->name }} learned <a href="#">{{ $lesson->category->title }}</a>!</p>
+                    <p>{{ $user->name }} learned <a href="{{ route('user.lesson_result', ['lesson' => $lesson->id]) }}">{{ $lesson->category->title }}</a>!</p>
                     <footer class="blockquote-footer"> {{ $lesson->updated_at }} </cite>
                     </footer>
                   </blockquote>
