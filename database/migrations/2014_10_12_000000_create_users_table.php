@@ -20,6 +20,7 @@ class CreateUsersTable extends Migration
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
             $table->boolean('is_admin')->default(false);
+            $table->string('image')->default('https://hiroaki-elearningsystem.s3-ap-northeast-1.amazonaws.com/profile_images/0.jpg');
             $table->rememberToken();
             $table->timestamps();
         });

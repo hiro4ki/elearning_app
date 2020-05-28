@@ -7,7 +7,7 @@
     @foreach ($categories as $category)
     <div class="col-lg-6 col-md-6 col-sm-12 mb-4">
       <div class="card bg-white text-white" style="position: relative;">
-        <img class="card-img" src="/storage/category_images/{{ $category->has_image() ? $category->id : '0' }}.jpg" alt="カードの画像" style="filter: blur(2px);">
+        <img class="card-img" src="{{ $category->image }}" alt="カードの画像" style="filter: blur(2px);">
         <div class="card-img-overlay">
           <h2 class="card-title">{{ $category->title }}</h2>
           <h4 class="card-text">{{ $category->description }}</h4>

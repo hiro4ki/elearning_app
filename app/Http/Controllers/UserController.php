@@ -144,16 +144,17 @@ class UserController extends Controller
 
     public function update_profile(UpdateProfile $request)
     {
-        if ($request->photo) {
-            Storage::disk('local')->delete('public/profile_images/' . auth()->user()->id . '.jpg');
-            $request->photo->storeAs('public/profile_images', auth()->user()->id . '.jpg');
-        }
-
         $user = User::findOrFail(auth()->user()->id);
         $user->update([
             'name' => $request->name,
             'email' => $request->email,
         ]);
+        
+        if ($request->photo) {
+            $path = Storage::disk('s3')->putFileAs('/profile_images', $request->photo, auth()->user()->id . '.jpg', 'public');
+            $user->image = Storage::disk('s3')->url($path);
+            $user->save();
+        }
 
         if ($request->password) {
             $user->update([
