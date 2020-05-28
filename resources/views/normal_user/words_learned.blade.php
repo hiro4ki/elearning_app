@@ -8,7 +8,7 @@
       <table class="table table-bordered mt-4">
         <tr>
           <td class="text-center" width="350px">
-            <img src="/storage/profile_images/{{ $user->has_image() ? $user->id : '0' }}.jpg" alt="user img" class="rounded-circle img-thumbnail" style="width: 150px; height: 150px; object-fit: contain;">
+            <img src="{{ $user->image }}" alt="user img" class="rounded-circle img-thumbnail" style="width: 150px; height: 150px; object-fit: contain;">
             <h3 class="card-title m-3">{{ $user->name }}</h3>
 
             <div class="card text-center">
