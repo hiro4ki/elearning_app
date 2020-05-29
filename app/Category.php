@@ -11,13 +11,6 @@ class Category extends Model
 {
     use Notifiable;
 
-    const CREATED_AT = 'created_at';
-    const UPDATED_AT = 'updated_at';
-    protected $table = 'categories';
-    protected $connection = 'mysql';
-    protected $primaryKey = "id"; // Auto incrementなどの主キーがある場合は明示的に設定しておく必要があります。
-    public $timestamp = true; // updated_atとcreated_atのカラムに現在時間を挿入したいときはtrueを設定します。
-
     /**
      * The attributes that are mass assignable.
      *
