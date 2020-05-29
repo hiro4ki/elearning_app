@@ -33,6 +33,37 @@
       <div class="card mt-4">
         <div class="card-header">
           <h2 class="text-center">Activities</h2>
+          @if (count($lessons) == 0)
+            @for ($j=0; $j < count($relationships); $j++)
+              <div class="card mt-3">
+                <div class="row no-gutters">
+                  <div class="col-md-2 align-self-center">
+                      <img src="{{ $relationships[$j]->follower()->image }}" class="card-img rounded-circle img-thumbnail ml-1" alt="user_img" style="width: 100px; height: 100px; object-fit: contain;">
+                  </div>
+                  <div class="col-md-10">
+                    <div class="card-body">
+                      <blockquote class="blockquote mb-0">
+                        <p>
+                          <a href="{{ route('user.profile', ['id' => $relationships[$j]->follower_id]) }}">
+                            {{ $relationships[$j]->follower()->id == auth()->user()->id ? "You" : $relationships[$j]->follower()->name }}
+                          </a> 
+                          followed
+                          <a href="{{ route('user.profile', ['id' => $relationships[$j]->followed_id]) }}">
+                            {{ $relationships[$j]->followed()->id == auth()->user()->id ? "You" : $relationships[$j]->followed()->name }}
+                          </a>!
+                          @php
+                          $flag = $j+1;
+                          @endphp
+                        </p>
+                        <footer class="blockquote-footer"> {{ $relationships[$j]->updated_at }} </cite>
+                        </footer>
+                      </blockquote>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            @endfor
+          @endif
           @for ($i = 0, $flag = 0; $i < count($lessons); $i++) 
             @for ($j=$flag; $j < count($relationships) && $lessons[$i]->updated_at < $relationships[$j]->updated_at; $j++)
               <div class="card mt-3">
