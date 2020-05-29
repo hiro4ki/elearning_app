@@ -20,7 +20,7 @@ Auth::routes();
 Route::get('/home', 'HomeController@index')->name('home');
 
 // admin
-Route::get('/admin/users', 'AdminController@index')->name('admin.users');
+Route::get('/admin/categories', 'AdminController@index')->name('admin.categories');
 Route::get('/admin/category/add', 'AdminController@add_category')->name('admin.add_category');
 Route::get('/admin/category/{id}/edit', 'AdminController@edit_category')->name('admin.edit_category');
 Route::get('/admin/category/question/{id}/edit', 'AdminController@edit_question')->name('admin.edit_question');

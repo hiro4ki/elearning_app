@@ -14,7 +14,7 @@ class AdminController extends Controller
     public function index()
     {
         $categories = Category::all();
-        return view('admin/users', compact('categories'));
+        return view('admin/categories', compact('categories'));
     }
 
     public function destroy_category($id)
@@ -22,7 +22,7 @@ class AdminController extends Controller
         $post = Category::findOrFail($id);
         $post->delete();
 
-        return redirect(route("admin.users"));
+        return redirect(route("admin.categories"));
     }
 
     public function add_category()
@@ -43,7 +43,7 @@ class AdminController extends Controller
             "description" => $request->description,
         ]);
 
-        return redirect(route("admin.users"));
+        return redirect(route("admin.categories"));
     }
 
     public function update_category(StoreCategoryPost $request, $id)
@@ -60,7 +60,7 @@ class AdminController extends Controller
             $category->save();
         }
             
-        return redirect(route("admin.users"));
+        return redirect(route("admin.categories"));
     }
 
     public function edit_question($id)
@@ -96,7 +96,7 @@ class AdminController extends Controller
             ]);
         }
         
-        return redirect(route("admin.users"));
+        return redirect(route("admin.categories"));
     }
 
     public function update_question(Request $request, $id)

@@ -57,8 +57,13 @@
                             <a class="nav-link" href="{{ route('user.dashboard') }}">Dashboard</a>
                         </li>
                         <li class="nav-item">
+                            @if (auth()->user()->is_admin)
                             <a class="nav-link"
-                                href="{{ route('user.categories', ['id' => auth()->user()->id]) }}">Categories</a>
+                            href="{{ route('admin.categories', ['id' => auth()->user()->id]) }}">Categories</a>
+                            @else
+                                <a class="nav-link"
+                                    href="{{ route('user.categories', ['id' => auth()->user()->id]) }}">Categories</a>
+                            @endif
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="{{ route('user.user_list', ['id' => auth()->user()->id]) }}">All
