@@ -6,7 +6,7 @@
   <ul class="list-group list-group-flush" style="max-width: 1000px;">
     @foreach ($users as $user)
     <li class="list-group-item d-flex justify-content-between align-items-center font-weight-bold">
-      <a href="#" class="col-md-9 h3 d-flex mt-2">
+      <a href="{{ route('user.profile', ['id' => $user->id]) }}" class="col-md-9 h3 d-flex mt-2">
         <div>{{ $user->id }}: </div>
         <div>{{ $user->name }}</div>
       </a>
