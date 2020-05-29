@@ -51,9 +51,6 @@
                           <a href="{{ route('user.profile', ['id' => $relationships[$j]->followed_id]) }}">
                             {{ $relationships[$j]->followed()->id == auth()->user()->id ? "You" : $relationships[$j]->followed()->name }}
                           </a>!
-                          @php
-                          $flag = $j+1;
-                          @endphp
                         </p>
                         <footer class="blockquote-footer"> {{ $relationships[$j]->updated_at }} </cite>
                         </footer>
