@@ -23,9 +23,12 @@
 
 <body>
     <div id="app">
-        <nav class="navbar navbar-expand-md navbar-light navbar-laravel">
+        <nav 
+            class="navbar navbar-expand-md navbar-light navbar-laravel"
+            style="background-color: #500E17;"
+        >
             <div class="container">
-                <a class="navbar-brand" href="{{ url('/') }}">
+                <a class="navbar-brand" href="{{ url('/') }}" style="color: white;">
                     E-Learning
                 </a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse"
@@ -45,34 +48,34 @@
                         <!-- Authentication Links -->
                         @guest
                         <li class="nav-item">
-                            <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
+                            <a class="nav-link" href="{{ route('login') }}" style="color: white;">{{ __('Login') }}</a>
                         </li>
                         @if (Route::has('register'))
                         <li class="nav-item">
-                            <a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a>
+                            <a class="nav-link" href="{{ route('register') }}" style="color: white;">{{ __('Register') }}</a>
                         </li>
                         @endif
                         @else
                         <li class="nav-item">
-                            <a class="nav-link" href="{{ route('user.dashboard') }}">Dashboard</a>
+                            <a class="nav-link" href="{{ route('user.dashboard') }}" style="color: white;">Dashboard</a>
                         </li>
                         <li class="nav-item">
                             @if (auth()->user()->is_admin)
                             <a class="nav-link"
-                            href="{{ route('admin.categories', ['id' => auth()->user()->id]) }}">Categories</a>
+                            href="{{ route('admin.categories', ['id' => auth()->user()->id]) }}" style="color: white;">Categories</a>
                             @else
                                 <a class="nav-link"
-                                    href="{{ route('user.categories', ['id' => auth()->user()->id]) }}">Categories</a>
+                                    href="{{ route('user.categories', ['id' => auth()->user()->id]) }}" style="color: white;">Categories</a>
                             @endif
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="{{ route('user.user_list', ['id' => auth()->user()->id]) }}">All
+                            <a class="nav-link" href="{{ route('user.user_list', ['id' => auth()->user()->id]) }}" style="color: white;">All
                                 Users</a>
                         </li>
 
                         <li class="nav-item dropdown">
                             <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button"
-                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="color: white;" v-pre>
                                 {{ Auth::user()->name }} <span class="caret"></span>
                             </a>
 
@@ -100,7 +103,7 @@
             </div>
         </nav>
 
-        <main class="py-4">
+        <main class="">
             @yield('content')
         </main>
     </div>
